@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const img = document.getElementById('yt-logo');
+      img.src = window.appPaths.logoPath;
+    });
+  </script>
+<style>
+    body {
+        margin: 0;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .icon-wrapper {
+        position: relative;
+        animation: blurOut 0.8s ease forwards,
+        expand 3s cubic-bezier(0,1.05,.12,1.03) ;
+        animation-delay: 3s;
+    }
+
+    .yt-icon {
+        width: 400px;
+        height: auto;
+        filter: blur(20px);
+        animation: sharpen 0.5s ease forwards;
+        z-index: 2;
+        position: relative;
+    }
+
+    .red-shadow {
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        filter: blur(40px);
+        animation: glow 3s ease-in-out infinite,
+        slideRight 3s ease-in-out forwards,
+        fadecolor 3s ease-in-out forwards;
+        z-index: 1;
+    }
+
+    @keyframes glow {
+        0% { transform: scale(2) translate(0, 0); opacity: 0.6; }
+        25% { transform: scale(4) translate(5px, -5px); opacity: 1; }
+        50% { transform: scale(0.95) translate(-5px, 5px); opacity: 0.7; }
+        75% { transform: scale(1) translate(3px, 3px); opacity: 1; }
+        100% { transform: scale(8) translate(0, 0); opacity: 0.6; }
+    }
+
+    @keyframes fadecolor {
+        0% { background-color:rgba(255, 0, 0, 0.068); }
+        25% { background-color: rgba(255, 0, 0, 0.041); }
+        50% { background-color: rgba(250, 0, 0, 0.568); }
+        75% { background-color: rgba(207, 0, 0, 0.61); }
+        100% { background-color: rgba(97, 97, 97, 0.288); }
+    }
+
+    @keyframes slideRight {
+  0% {
+    transform: translateX(-300px);
+  }
+  100% {
+    transform: translateX(300px); opacity: 1; /* Move 100px to the right */
+  }
+}
+
+.your-element {
+  animation: slideRight 2s ease-in-out forwards;
+}
+
+    /* Blur decrease for icon */
+    @keyframes sharpen {
+        0%{ filter: blur(80px); transform: scale(3); }
+        100%{ filter: blur(0); transform: scale(1);}
+    }
+
+    @keyframes blurOut {
+        0%{ filter: blur(0); opacity: 1; }
+        50%{ filter: blur(0px); opacity: 0; }
+        75%{ filter: blur(0px); opacity: 0; }
+        100%{ filter: blur(3px); opacity: 0; }
+    }
+    @keyframes expand {
+        0% { transform: scale(1.2); filter: blur(20); opacity: 1;}
+        50% { transform: scale(1.5); filter: blur(10px); opacity: 0; }
+        75% { transform: scale(2); filter: blur(5px); opacity: 0; }
+        100% { transform: scale(50); filter: blur(0); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+    <div class="icon-wrapper">
+        <div class="red-shadow"></div>
+        <img src="assets/splash-logo.svg" class="yt-icon" alt="YouTube Logo">
+    </div>
+</body>
+</html>
