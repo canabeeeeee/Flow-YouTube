@@ -51,6 +51,7 @@ function createWindows() {
     mainWindow.webContents.insertCSS(`
       * {
         user-select: none !important;
+        --yt-frosted-glass-backdrop-filter-override: blur(40px) !important;
         -webkit-user-select: none !important;
       }
       input, textarea, [contenteditable="true"] {
@@ -158,3 +159,4 @@ app.whenReady().then(createWindows);
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
+
